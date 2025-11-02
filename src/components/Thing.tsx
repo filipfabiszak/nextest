@@ -1,5 +1,5 @@
 'use client'
-import { useForm } from "react-hook-form";
+import { useForm, FieldError } from "react-hook-form";
 
 export const Thing = () => {
 
@@ -25,12 +25,12 @@ export const Thing = () => {
       <input
         {...register("username", { required: "Username is required" })}
       />
-      {errors.username && <p>{errors.username.message}</p>}
+      {errors.username && <p>{(errors.username as FieldError)?.message}</p>}
 
       <input
         {...register("password", { required: "Password is required" })}
       />
-      {errors.password && <p>{errors.password.message}</p>}
+      {errors.password && <p>{(errors.password as FieldError)?.message}</p>}
 
       <button type="submit">
         "Submit"
